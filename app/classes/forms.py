@@ -9,6 +9,8 @@ from wtforms.fields.html5 import URLField, DateField, IntegerRangeField, EmailFi
 from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, RadioField
 from wtforms_components import TimeField
 
+role = SelectField('Role',choices = [('Teacher','Teacher'),('Student','Student')])
+
 class ProfileForm(FlaskForm):
     fname = StringField('First Name', validators=[DataRequired()])
     lname = StringField('Last Name', validators=[DataRequired()]) 

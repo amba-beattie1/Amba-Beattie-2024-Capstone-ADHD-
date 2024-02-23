@@ -20,6 +20,8 @@ import jwt
 from time import time
 from bson.objectid import ObjectId
 
+role = StringField()
+
 class User(UserMixin, Document):
     createdate = DateTimeField(defaultdefault=dt.datetime.utcnow)
     gid = StringField(sparse=True, unique=True)
@@ -93,7 +95,8 @@ class Clinic(Document):
     description = StringField()
     lat = FloatField()
     lon = FloatField()
+
     
-    meta = {
+meta = {
         'ordering': ['-createdate']
     }
