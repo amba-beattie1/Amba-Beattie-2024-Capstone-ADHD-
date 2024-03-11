@@ -2,14 +2,7 @@
 
 {% block body %}
 
-<p>
-    {{form.role.label}}<br>
-    {{form.role()}}<br>
-    {% for error in form.role.errors %}
-    <span style = "color: red;">[{{error}}]</span>
-</p>
 
-Role:{{current_user.role}} <br>
 
 
     <h1>Register</h1>
@@ -41,6 +34,20 @@ Role:{{current_user.role}} <br>
             {{ form.image() }}<br>
             {% for error in form.image.errors %}
             <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{form.role.label}}<br>
+            {{form.role()}}<br>
+            {% for error in form.role.errors %}
+            <span style = "color: red;">[{{error}}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{form.phone_number.label}}<br>
+            {{form.phone_number()}}<br>
+            {% for error in form.phone_number.errors %}
+            <span style = "color: red;">[{{error}}]</span>
             {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>

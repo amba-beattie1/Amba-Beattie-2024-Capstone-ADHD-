@@ -9,13 +9,15 @@ from wtforms.fields.html5 import URLField, DateField, IntegerRangeField, EmailFi
 from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, RadioField
 from wtforms_components import TimeField
 
-role = SelectField('Role',choices = [('Teacher','Teacher'),('Student','Student')])
+
 
 class ProfileForm(FlaskForm):
     fname = StringField('First Name', validators=[DataRequired()])
     lname = StringField('Last Name', validators=[DataRequired()]) 
     image = FileField("Image") 
     submit = SubmitField('Post')
+    role = SelectField('Role',choices = [('Teacher','Teacher'),('Student','Student')])
+    phone_number = StringField('Phone Number:')
 
 class ConsentForm(FlaskForm):
     adult_fname = StringField('First Name',validators=[DataRequired()])
@@ -52,3 +54,11 @@ class ClinicForm(FlaskForm):
     zipcode = StringField('Zipcode',validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Submit')
+
+class AnimalForm(FlaskForm):
+    species = StringField("species", validators = [DataRequired()])
+    name = StringField("Name", validators = [DataRequired()])
+    sex = StringField("Sex", validators = [DataRequired()])
+    age = IntegerField("Age", validators = [DataRequired()])
+    image = FileField("Image", validators = [DataRequired()])
+    notes = StringField("Notes", validators = [DataRequired()])

@@ -20,8 +20,6 @@ import jwt
 from time import time
 from bson.objectid import ObjectId
 
-role = StringField()
-
 class User(UserMixin, Document):
     createdate = DateTimeField(defaultdefault=dt.datetime.utcnow)
     gid = StringField(sparse=True, unique=True)
@@ -37,6 +35,9 @@ class User(UserMixin, Document):
     adult_lname = StringField()
     adult_email = StringField()
     consent = BooleanField(default=False)
+    role = StringField()
+    phone_number = StringField()
+
 
     meta = {
         'ordering': ['lname','fname']
@@ -95,8 +96,23 @@ class Clinic(Document):
     description = StringField()
     lat = FloatField()
     lon = FloatField()
-
     
-meta = {
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Animal(Document):
+    author = ReferenceField ('User',reverse_delete_rule=CASCADE)
+    createdate = DateTimeField(default= dt.datetime.utcnow)
+    modifydate = DateTimeField()
+    species = StringField()
+    name = StringField()
+    sex = StringField()
+    age = IntField()
+    image = FileField()
+    notes = StringField()
+
+
+    meta = {
         'ordering': ['-createdate']
     }
