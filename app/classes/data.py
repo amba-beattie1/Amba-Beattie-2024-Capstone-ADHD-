@@ -111,13 +111,14 @@ class Animal(Document):
     age = IntField()
     notes = StringField()
 
-    class Task(Document):
+class Task(Document):
     author = ReferenceField ('User',reverse_delete_rule=CASCADE)
     create_date = DateTimeField(default= dt.datetime.utcnow)
     modify_date = DateTimeField()
     description = StringField()
     priority = IntField()
     due_date = DateTimeField()
+    notes = StringField()
 
 
     meta = {

@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 import mongoengine.errors
 from wtforms.validators import URL, Email, DataRequired, NumberRange
 from wtforms.fields.html5 import URLField, DateField, IntegerRangeField, EmailField
-from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, RadioField
+from wtforms import DateTimeField, StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, RadioField
 from wtforms_components import TimeField
 
 
@@ -56,9 +56,16 @@ class ClinicForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class AnimalForm(FlaskForm):
-    species = StringField("species", validators = [DataRequired()])
+    species = StringField("Species", validators = [DataRequired()])
     name = StringField("Name", validators = [DataRequired()])
     sex = StringField("Sex", validators = [DataRequired()])
     age = IntegerField("Age", validators = [DataRequired()])
+    notes = StringField("Notes", validators = [DataRequired()])
+    submit = SubmitField('Submit')
+
+class TaskForm(FlaskForm):
+    description = StringField("Description of Task:", validators = [DataRequired()])
+    priority = IntegerField("Priority Level (1(low)-5(high)):", validators = [DataRequired()])
+    due_date = DateTimeField("Finish By:", validators = [DataRequired()])
     notes = StringField("Notes", validators = [DataRequired()])
     submit = SubmitField('Submit')
