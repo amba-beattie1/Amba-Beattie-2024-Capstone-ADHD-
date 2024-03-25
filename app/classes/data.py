@@ -103,14 +103,21 @@ class Clinic(Document):
 
 class Animal(Document):
     author = ReferenceField ('User',reverse_delete_rule=CASCADE)
-    createdate = DateTimeField(default= dt.datetime.utcnow)
-    modifydate = DateTimeField()
+    create_date = DateTimeField(default= dt.datetime.utcnow)
+    modify_date = DateTimeField()
     species = StringField()
     name = StringField()
     sex = StringField()
     age = IntField()
-    image = FileField()
     notes = StringField()
+
+    class Task(Document):
+    author = ReferenceField ('User',reverse_delete_rule=CASCADE)
+    create_date = DateTimeField(default= dt.datetime.utcnow)
+    modify_date = DateTimeField()
+    description = StringField()
+    priority = IntField()
+    due_date = DateTimeField()
 
 
     meta = {

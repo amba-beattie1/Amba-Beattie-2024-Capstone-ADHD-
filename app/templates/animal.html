@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if animal %}
+    {{moment(animal.create_date).calendar()}} by {{animal.author.fname}} {{animal.author.lname}} 
+    {% if animal.modify_date %}
+        modified {{moment(animal.modify_date).calendar()}}
+    {% endif %}
+    <br>
+    {% if animal.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Animal" href="/animal/delete/{{animal.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Edit Animal" href="/animal/edit/{{animal.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+    {% endif %}
+
+    <h1 class="display-5">{{animal.name}}</h1>
+    <p class="fs-3 text-break">
+        {% if animal.author.image %}
+            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(animal.author.image.read())}}">
+        {% endif %}
+            {{animal.name}} <br>
+            {{animal.sex}} <br>
+            {{animal.age}} <br>
+            {{animal.species}} <br>
+            {{animal.notes}}
+
+    </p>
+
+   
+{% else %}
+
+{% endif %}
+
+{% endblock %}

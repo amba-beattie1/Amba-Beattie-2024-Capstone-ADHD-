@@ -60,5 +60,5 @@ class AnimalForm(FlaskForm):
     name = StringField("Name", validators = [DataRequired()])
     sex = StringField("Sex", validators = [DataRequired()])
     age = IntegerField("Age", validators = [DataRequired()])
-    image = FileField("Image", validators = [DataRequired()])
     notes = StringField("Notes", validators = [DataRequired()])
+    submit = SubmitField('Submit')
