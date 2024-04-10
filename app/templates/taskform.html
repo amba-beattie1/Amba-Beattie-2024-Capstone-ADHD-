@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block body %}
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+        <h1>Add a post!</h1>
+
+        <div class="text-center">
+
+        
+        <form method=post>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.description.label }} <br>
+                {{ form.description(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.description.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.priority.label }} <br>
+                {{ form.priority(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.priority.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.due_date.label }} <br>
+                {{ form.due_date(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.due_date.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.notes.label }} <br>
+                {{ form.notes(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.notes.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+             <p>
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+                <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+
+
+                {{form.submit()}}
+            </p>
+        </form>
+    </div>
+       
+{% endblock %}
