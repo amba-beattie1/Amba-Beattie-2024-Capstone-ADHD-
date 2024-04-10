@@ -117,7 +117,7 @@ class Task(Document):
     modify_date = DateTimeField()
     description = StringField()
     priority = IntField()
-    due_date = DateTimeField()
+    due_date = StringField()
     notes = StringField()
 
 

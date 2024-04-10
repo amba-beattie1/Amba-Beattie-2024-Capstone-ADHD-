@@ -7,7 +7,7 @@ from app.classes.forms import TaskForm, CommentForm
 from flask_login import login_required
 import datetime as dt
 
-#CREATE NEW ANIMAL
+#CREATE NEW TASK
 # This route actually does two things depending on the state of the if statement 
 # 'if form.validate_on_submit()'. When the route is first called, the form has not 
 # been submitted yet so the if statement is False and the route renders the form.
@@ -57,3 +57,39 @@ def taskNew():
     # stored in the form object and are displayed on the form. take a look at blogform.html to 
     # see how that works.
     return render_template('taskform.html',form=form)
+
+#VIEW TASK
+# This route will get one specific blog and any comments associated with that blog.  
+# The blogID is a variable that must be passsed as a parameter to the function and 
+# can then be used in the query to retrieve that blog from the database. This route 
+# is called when the user clicks a link on bloglist.html template.
+# The angle brackets (<>) indicate a variable. 
+@app.route('/task/<taskID>')
+# This route will only run if the user is logged in.
+@login_required
+def task(taskID):
+    # retrieve the blog using the blogID
+    thisTask = Task.objects.get(id=taskID)
+    # If there are no comments the 'comments' object will have the value 'None'. Comments are 
+    # related to blogs meaning that every comment contains a reference to a blog. In this case
+    # there is a field on the comment collection called 'blog' that is a reference the Blog
+    # document it is related to.  You can use the blogID to get the blog and then you can use
+    # the blog object (thisBlog in this case) to get all the comments.
+    theseComments = Comment.objects(task=thisTask)
+    # Send the blog object and the comments object to the 'animal.html' template.
+    return render_template('task.html',task=thisTask,comments=theseComments)
+
+#VIEW ALL TASKS
+# This is the route to list all blogs
+@app.route('/task/list')
+@app.route('/tasks')
+# This means the user must be logged in to see this page
+@login_required
+def taskList():
+    # This retrieves all of the 'blogs' that are stored in MongoDB and places them in a
+    # mongoengine object as a list of dictionaries name 'blogs'.
+    tasks = Task.objects()
+    # This renders (shows to the user) the blogs.html template. it also sends the blogs object 
+    # to the template as a variable named blogs.  The template uses a for loop to display
+    # each blog.
+    return render_template('tasks.html',tasks=tasks)

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if task %}
+    {{moment(task.create_date).calendar()}} by {{task.author.fname}} {{task.author.lname}} 
+    {% if task.modify_date %}
+        modified {{moment(task.modify_date).calendar()}}
+    {% endif %}
+    <br>
+    {% if task.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Task" href="/task/delete/{{task.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Edit Task" href="/task/edit/{{task.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+    {% endif %}
+
+    <h1 class="display-5">{{task.description}}</h1>
+    <p class="fs-3 text-break">
+        {% if task.author.image %}
+            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(task.author.image.read())}}">
+        {% endif %}
+            {{task.description}} <br>
+            {{task.priority}} <br>
+            {{task.due_date}} <br>
+            {{task.notes}}
+
+    </p>
+
+   
+{% else %}
+
+{% endif %}
+
+{% endblock %}
