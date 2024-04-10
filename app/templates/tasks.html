@@ -37,6 +37,12 @@
                 {% endif %}
                 {{task.description}}
             </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Urgency</h3>
+                {% endif %}
+                {{task.priority}}
+            </div>
         </div>
     {% endfor %}
 {% else %}
