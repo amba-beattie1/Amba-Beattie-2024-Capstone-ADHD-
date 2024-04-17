@@ -82,7 +82,6 @@ def task(taskID):
 #VIEW ALL TASKS
 # This is the route to list all blogs
 @app.route('/task/list')
-@app.route('/tasks')
 # This means the user must be logged in to see this page
 @login_required
 def taskList():
@@ -92,4 +91,4 @@ def taskList():
     # This renders (shows to the user) the blogs.html template. it also sends the blogs object 
     # to the template as a variable named blogs.  The template uses a for loop to display
     # each blog.
-    return render_template('tasks.html',tasks=tasks)
+    return render_template('tasklist.html',tasks=tasks)

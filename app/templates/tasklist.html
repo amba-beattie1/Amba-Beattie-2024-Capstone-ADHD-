@@ -25,23 +25,31 @@
                     {{moment(task.create_date).calendar()}}
                 </a>
             </div>
-            <div class="col-2">
-                {% if loop.index == 1 %}
-                <h3 class="display-5">User</h3>
-                {% endif %}
-                {{task.author.fname}} {{task.author.lname}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-5">Subject</h3>
-                {% endif %}
-                {{task.description}}
-            </div>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-5">Urgency</h3>
                 {% endif %}
                 {{task.priority}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">User</h3>
+                {% endif %}
+                {%if task.priority >3 %}
+                    <font color = "red">{{task.author.fname}} {{task.author.lname}}</font>
+                {%else%}
+                    <font color = "green">{{task.author.fname}} {{task.author.lname}}</font>
+                {% endif %}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Subject</h3>
+                {% endif %}
+                {%if task.priority >3 %}
+                    <font color = "red">{{task.description}}<font>
+                {%else%}
+                    <font color = "green">{{task.description}}</font>
+                {% endif %}
             </div>
         </div>
     {% endfor %}
