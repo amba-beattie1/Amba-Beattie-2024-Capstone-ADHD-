@@ -33,9 +33,10 @@ def taskNew():
         newTask = Task(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
+            title = form.title.data,
             description = form.description.data,
             priority = form.priority.data,
-            due_date = form.due_date.data,
+            date = form.date.data,
             notes = form.notes.data,
             author = current_user.id,
             # This sets the modifydate to the current datetime.

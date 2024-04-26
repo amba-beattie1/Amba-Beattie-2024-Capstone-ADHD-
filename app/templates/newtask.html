@@ -1,69 +1,41 @@
 {% extends "base.html" %}
 
 {% block body %}
-        <h1>New Task</h1>
 
-        <form method=post>
-            {{ form.hidden_tag() }}
-            <p>
-                {{ form.sleep_date.label }} <br>
-                {{ form.sleep_date() }}
-                <!--List the errors for this field-->
-                {% for error in form.sleep_date.errors %}
-                   <br> <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.starttime.label }} <br>
-                {{ form.starttime(size=6) }}
-                <!--List the errors for this field-->
-                {% for error in form.starttime.errors %}
-                   <br> <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.wake_date.label }} <br>
-                {{ form.wake_date() }}
-                <!--List the errors for this field-->
-                {% for error in form.wake_date.errors %}
-                   <br> <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.endtime.label }} <br>
-                {{ form.endtime(size=6) }}
-                <!--List the errors for this field-->
-                {% for error in form.endtime.errors %}
-                   <br> <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.rating.label }} <br>
-                {{ form.rating() }}
-                <!--List the errors for this field-->
-                {% for error in form.rating.errors %}
-                   <br> <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.feel.label }} <br>
-                {{ form.feel() }}
-                <!--List the errors for this field-->
-                {% for error in form.feel.errors %}
-                   <br> <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.minstosleep.label }} <br>
-                {{ form.minstosleep(size=3) }}
-                <!--List the errors for this field-->
-                {% for error in form.minstosleep.errors %}
-                   <br> <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{form.submit()}}
-            </p>
-        </form>
-        
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-4">
+        <a href="/calendar" class="btn btn-primary btn-md">Back to Calendar</a>
+      </div>
+      <div class="col-8">
+        <h1>New Event</h1>
+      </div>
+    </div>
+    <hr />
+    <form method=post>
+      {{ form.hidden_tag() }}
+      {{ form.title.label }}
+      {{ form.title(class_="form-control") }}
+      <br />
+      {{ form.description.label }}
+      {{ form.description(class_="form-control") }}
+      <br />
+      {{ form.date.label }}
+      {{ form.date(class_="form-control", type="date") }}
+      <br />
+      <!-- {{ form.time.label }}
+      {{ form.time(class_="form-control") }}
+      <br /> -->
+      {{ priority.time.label }}
+      {{ priority.time(class_="form-control") }}
+      <br />
+      {{ notes.time.label }}
+      {{ notes.time(class_="form-control") }}
+      <br />
+      {{form.submit(class_="btn btn-primary")}}
+    </form>
+  </div>
+</div>
+
 {% endblock %}

@@ -10,6 +10,7 @@ from typing import KeysView
 from xmlrpc.client import Boolean
 
 from setuptools import SetuptoolsDeprecationWarning
+from wtforms import DateField
 from app import app
 from flask import flash
 from flask_login import UserMixin
@@ -117,8 +118,9 @@ class Task(Document):
     modify_date = DateTimeField()
     description = StringField()
     priority = IntField()
-    due_date = StringField()
+    date = DateField()
     notes = StringField()
+    title = StringField()
 
 
     meta = {

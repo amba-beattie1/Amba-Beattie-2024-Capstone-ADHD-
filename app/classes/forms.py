@@ -66,6 +66,7 @@ class AnimalForm(FlaskForm):
 class TaskForm(FlaskForm):
     description = StringField("Description of Task:", validators = [DataRequired()])
     priority = IntegerField("Priority Level (1(low)-5(high)):", validators = [DataRequired()])
-    due_date = StringField("Finish By:", validators = [DataRequired()])
     notes = StringField("Notes", validators = [DataRequired()])
     submit = SubmitField('Submit')
+    date = DateField("Date", format='%Y-%m-%d')
+    title = StringField("Title")

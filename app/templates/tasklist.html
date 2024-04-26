@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block body %}
@@ -13,6 +14,10 @@
     </div>
 </div>
 
+<form action = "sample.html">
+    <input type = "datetime-local">
+</form>
+<button>Submit</button>
 {% if tasks %}
     {% for task in tasks %}
         <div class="row border-bottom">
