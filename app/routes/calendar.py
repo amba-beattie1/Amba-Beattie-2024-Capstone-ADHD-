@@ -121,7 +121,7 @@ def newtask(objtype="none",objid="none"):
       taskdatetime = d.datetime.combine(d.date(int(taskdate[0]),int(taskdate[1]),int(taskdate[2])), d.time(int(tasktime[0]),int(tasktime[1]),int(tasktime[2])))
 
       newTask = Task()
-      newTask.owner = ObjectId(session['currUserId'])
+      newTask.author = ObjectId(session['currUserId'])
       newTask.description = form.description.data
       newTask.priority=form.priority.data
       newTask.notes=form.notes.data

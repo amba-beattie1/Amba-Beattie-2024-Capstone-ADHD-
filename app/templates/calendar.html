@@ -44,7 +44,7 @@
 						<!-- Check if there is an event on this day -->
 						{% set activity = namespace(found=false) %}
 						{% for task in tasks %}
-							{% if task.owner.gid == session['gid'] and year == task.date[0] and monthName == task.date[1] and day|string == task.date[2] %}
+							{% if task.author.gid == session['gid'] and year == task.date[0] and monthName == task.date[1] and day|string == task.date[2] %}
 								{% set activity.found = true %}
 							{% endif %}
 						{% endfor %}
@@ -64,7 +64,7 @@
 					<p class="mb-1">
 						<ul>
 							{% for task in tasks %}
-							{% if task.owner.name == session['displayName'] and year == task.date[0] and monthName == task.date[1] and day|string == task.date[2] %}
+							{% if task.author.name == session['displayName'] and year == task.date[0] and monthName == task.date[1] and day|string == task.date[2] %}
 							<li>{{task.title}}</li>
 							{% endif %}
 							{% endfor %}

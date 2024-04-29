@@ -22,8 +22,8 @@
         {% if task.author.image %}
             <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(task.author.image.read())}}">
         {% endif %}
-            {{task.description}} <br>
             {{task.title}} <br>
+            {{task.description}} <br>
             {{task.priority}} <br>
             {{task.date}} <br>
             {{task.notes}}

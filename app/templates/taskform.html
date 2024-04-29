@@ -7,13 +7,21 @@
 <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
 
 <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
-        <h1>Add a post!</h1>
+        <h1 class = "text-center tkinter.font.ITALIC">Add a Task!</h1>
 
         <div class="text-center">
 
         
         <form method=post>
             {{ form.hidden_tag() }}
+            <p>
+                {{ form.title.label }} <br>
+                {{ form.title(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.title.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
             <p>
                 {{ form.description.label }} <br>
                 {{ form.description(size=64) }}
@@ -43,14 +51,6 @@
                 {{ form.notes(size=64) }}
                 <!--List the errors for this field-->
                 {% for error in form.notes.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.title.label }} <br>
-                {{ form.title(size=64) }}
-                <!--List the errors for this field-->
-                {% for error in form.title.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>

@@ -18,7 +18,7 @@
     <hr>
     <div class="list-group">
       {% for task in tasks %}
-        {% if task.owner.gid == session['gid'] and year == task.date[0] and month == task.date[1] and day|string == task.date[2] %}
+        {% if task.author.gid == session['gid'] and year == task.date[0] and month == task.date[1] and day|string == task.date[2] %}
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{task.title}}</h5>

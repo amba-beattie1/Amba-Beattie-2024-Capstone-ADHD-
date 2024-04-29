@@ -36,8 +36,8 @@ def taskNew():
             title = form.title.data,
             description = form.description.data,
             priority = form.priority.data,
-            date = form.date.data,
             notes = form.notes.data,
+            date = form.date.data,
             author = current_user.id,
             # This sets the modifydate to the current datetime.
             modify_date = dt.datetime.utcnow
