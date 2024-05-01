@@ -30,6 +30,7 @@ def taskNew():
         # This stores all the values that the user entered into the new blog form. 
         # Blog() is a mongoengine method for creating a new blog. 'newBlog' is the variable 
         # that stores the object that is the result of the Blog() method.  
+        beautifuldate = form.date.strftime("%b %d %Y")
         newTask = Task(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
@@ -39,6 +40,7 @@ def taskNew():
             notes = form.notes.data,
             date = form.date.data,
             author = current_user.id,
+            beautifuldate = beautifuldate,
             # This sets the modifydate to the current datetime.
             modify_date = dt.datetime.utcnow
         )

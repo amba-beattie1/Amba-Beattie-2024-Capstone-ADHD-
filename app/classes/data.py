@@ -121,6 +121,7 @@ class Task(Document):
     date = DateTimeField()
     notes = StringField()
     title = StringField()
+    beautifuldate = DateTimeField()
 
 
     meta = {

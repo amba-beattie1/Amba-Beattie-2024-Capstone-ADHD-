@@ -46,14 +46,6 @@
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
-                {{ form.notes.label }} <br>
-                {{ form.notes(size=64) }}
-                <!--List the errors for this field-->
-                {% for error in form.notes.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
              <p>
                 <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
                 <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
@@ -66,8 +58,11 @@
 
 <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
 
-
-                {{form.submit()}}
+            .my-button{
+                display:block;
+                margin:auto;
+            }
+            <class = "my-button">{{form.submit()}}</class>
             </p>
         </form>
     </div>

@@ -64,9 +64,13 @@
 					<p class="mb-1">
 						<ul>
 							{% for task in tasks %}
-							{% if task.author.name == session['displayName'] and year == task.date[0] and monthName == task.date[1] and day|string == task.date[2] %}
-							<li>{{task.title}}</li>
-							{% endif %}
+								{% if task.author.name == session['displayName'] and year == task.date[0] and monthName == task.date[1] and day|string == task.date[2]%}
+									{%if task.priority > 3%}
+										<li style = "color:red">{{task.title}}</li>
+									{%else%}	
+										<li style = "color:green">{{task.title}}</li>
+									{% endif %}
+								{% endif %}
 							{% endfor %}
 						</ul>
 					</p>
@@ -78,7 +82,7 @@
 	</div>
 	<br />
 	<div class="container text-center">
-		<a href="/newtask" class="btn btn-lg btn-primary">New Task</a>
+		<a href="/task/new" class="btn btn-lg btn-primary">New Task</a>
 	</div>
 </div>
 {% endblock %}

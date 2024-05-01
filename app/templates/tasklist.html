@@ -14,21 +14,21 @@
     </div>
 </div>
 
-<form action = "sample.html">
-    <input type = "datetime-local">
-</form>
+
 <button>Submit</button>
 {% if tasks %}
     {% for task in tasks %}
+    
         <div class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
+                    <h3 class="display-5">Title</h3>
                 {% endif %}
-
-                <a href="/task/{{task.id}}">
-                    {{moment(task.create_date).calendar()}}
-                </a>
+                {%if task.priority >3 %}
+                    <font color = "red">{{task.title}}</font>
+                {%else%}
+                    <font color = "green">{{task.title}}</font>
+                {% endif %}
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
@@ -38,25 +38,25 @@
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
+                <h3 class="display-5">Date</h3>
+                {% endif %}
+
+                <a href="/task/{{task.id}}">
+                    {{moment(task.create_date).calendar()}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
                 <h3 class="display-5">User</h3>
                 {% endif %}
-                {%if task.priority >3 %}
-                    <font color = "red">{{task.author.fname}} {{task.author.lname}}</font>
-                {%else%}
-                    <font color = "green">{{task.author.fname}} {{task.author.lname}}</font>
-                {% endif %}
+                {{task.author.fname}}{{task.author.lname}}
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Subject</h3>
+                    <h3 class="display-5">Due Date</h3>
                 {% endif %}
-                {%if task.priority >3 %}
-                    <font color = "red">{{task.description}}<font>
-                {%else%}
-                    <font color = "green">{{task.description}}</font>
-                {% endif %}
+                {{task.date}}
             </div>
-        </div>
     {% endfor %}
 {% else %}
 
