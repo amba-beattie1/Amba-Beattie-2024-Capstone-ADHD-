@@ -119,10 +119,7 @@ class Task(Document):
     description = StringField()
     priority = IntField()
     date = DateTimeField()
-    notes = StringField()
     title = StringField()
-    beautifuldate = DateTimeField()
-
 
     meta = {
         'ordering': ['-createdate']
